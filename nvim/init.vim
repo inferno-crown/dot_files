@@ -1,11 +1,9 @@
-" this is for windows change call plu#begin for linux
-
-call plug#begin('~/App Data/Local/nvim/autoload/plugged')
+call plug#begin()
 
 Plug 'sheerun/vim-polyglot'
 Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim'
-
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'habamax/vim-asciidoctor'
 call plug#end()
 
 " basics
@@ -15,6 +13,8 @@ set mouse=a
 set clipboard=unnamedplus
 set background=dark
 set hidden
+set nowrap
+set scrolloff=8
 
 " tabs
 set autoindent
@@ -37,8 +37,12 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 
 " bindings
-let mapleader = "\<Spcae>"
-nnoremap <silent> <C-Right> :bn<CR>
-nnoremap <silent> <C-Left> :bp<CR>
+  " Ctrl
+let mapleader = " "
+nnoremap <silent> <A-Right> :bn<CR>
+nnoremap <silent> <A-Left> :bp<CR>
+
+  " alt
+nnoremap <silent> <A-Up> :set number! relativenumber!<CR>
 
 " autocmd
